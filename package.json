@@ -1,0 +1,18 @@
+{
+  "name": "php7-starter",
+  "version": "1.0.0",
+  "description": "A starter project for learning PHP without the helish setup. uses nginx, php-fpm, and mysql",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker compose up",
+    "stop": "docker compose down"
+  },
+  "keywords": [
+    "PHP",
+    "MySQL",
+    "NGINX",
+    "composer"
+  ],
+  "author": "Giuseppe Ruggieri",
+  "license": "ISC"
+}
