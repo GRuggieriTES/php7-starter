@@ -22,7 +22,17 @@ class LearningController extends AppController
 
     public function variables()
     {
-        $this->set('url', '/variables');
+$code = '
+<?php
+    function helloWorld() {
+        echo "Hello, world! variables";
+    }
+
+    helloWorld();
+?>
+';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
@@ -34,109 +44,289 @@ class LearningController extends AppController
 
     public function echoPrint()
     {
-        $this->set('url', '/echo-print');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! echo print";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function dataTypes()
     {
-        $this->set('url', '/data-types');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! data types";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function strings()
     {
-        $this->set('url', '/strings');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! strings";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function numbers()
     {
-        $this->set('url', '/numbers');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! numbers";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function casting()
     {
-        $this->set('url', '/casting');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! casting";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function math()
     {
-        $this->set('url', '/math');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! math";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function constants()
     {
-        $this->set('url', '/constants');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! constants";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function magicConstants()
     {
-        $this->set('url', '/magic-constants');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! magic constants";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function operators()
     {
-        $this->set('url', '/operators');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! operators";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function ifElse ()
     {
-        $this->set('url', '/if-else ');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! if else esleif";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function switch()
     {
-        $this->set('url', '/switch');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! switch";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function loops()
     {
-        $this->set('url', '/loops');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! loops";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function functions()
     {
-        $this->set('url', '/functions');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! functions";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function arrays()
     {
-        $this->set('url', '/arrays');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! arrays";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function superGlobals()
     {
-        $this->set('url', '/super-globals');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! superGlobals";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function classes()
     {
-        $this->set('url', '/classes');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! classes";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function exceptions()
     {
-        $this->set('url', '/exceptions');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! exceptions";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 
     public function regExp()
     {
-        $this->set('url', '/regex');
+        $code = '
+        <?php
+            function helloWorld() {
+                echo "Hello, world! regExp";
+            }
+    
+            helloWorld();
+        ?>
+            ';
+    
+        $this->set('code', $code);
         $this->render('/Learning/index');
     }
 }

@@ -39,8 +39,29 @@ endif;
             <?= $this->fetch('title') ?>
         </title>
         <?= $this->Html->meta('icon') ?>
-        <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake', 'home', 'learning']) ?>
-        <?= $this->Html->script(['learning']) ?>
+        <?= $this->Html->css([
+            'normalize.min',
+            'milligram.min',
+            'fonts',
+            'cake',
+            'home',
+            'learning',
+            'codemirror/codemirror',
+            'codemirror/monokai',
+            'codemirror/show-hint'
+        ]) ?>
+        <?= $this->Html->script([
+            'codemirror/codemirror',
+            'codemirror/active-line',
+            'codemirror/show-hint',
+            'codemirror/matchbrackets',
+            'codemirror/htmlmixed',
+            'codemirror/xml',
+            'codemirror/javascript',
+            'codemirror/css',
+            'codemirror/clike',
+            'codemirror/php'
+        ]) ?>
 
         <?= $this->fetch('meta') ?>
         <?= $this->fetch('css') ?>
@@ -85,9 +106,22 @@ endif;
             <?php if (isset($hasUsers)): ?>
                 <?= $this->cell('Users') ?>
             <?php endif ?>
-            <?php if (isset($url)): ?>
-                <iframe width="100%" height="100%" src="<?= $url ?>" title="" frameborder="0"></iframe>
-            <?php endif ?>
+
+            <form method="POST">
+                <textarea id="code" name="code">
+                    <?php echo $code; ?>
+                </textarea>
+                <input id="run" type="submit" value="Run">
+            </form>
+
+            <p>Output:</p>
+            <div id="output">
+                ...
+            </div>
+            <div id="console-output">
+                ...
+            </div>
         </main>
+        <?= $this->Html->script(['learning']) ?>
     </body>
 </html>
