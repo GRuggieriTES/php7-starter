@@ -523,15 +523,25 @@ $code = '
 
     public function switch()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! switch";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    $favcolor = "red";
+
+    switch ($favcolor) {
+    case "red":
+        echo "Your favorite color is red!";
+        break;
+    case "blue":
+        echo "Your favorite color is blue!";
+        break;
+    case "green":
+        echo "Your favorite color is green!";
+        break;
+    default:
+        echo "Your favorite color is neither red, blue, nor green!";
+    }
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -539,15 +549,66 @@ $code = '
 
     public function loops()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! loops";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    for ($x = 0; $x <= 10; $x++) {
+        echo "The number is: $x <br>";
+    }
+
+    echo "<br>";
+
+    for ($x = 0; $x <= 10; $x++) {
+        if ($x == 3) break;
+        echo "The number is: $x <br>";
+    }
+
+    echo "<br>";
+
+    for ($x = 0; $x <= 10; $x++) {
+        if ($x == 3) continue;
+        echo "The number is: $x <br>";
+    }
+
+    echo "<br>";
+
+    for ($x = 0; $x <= 100; $x+=10) {
+        echo "The number is: $x <br>";
+    }
+
+    echo "<br>";
+
+    $colors = array("red", "green", "blue", "yellow");
+
+    foreach ($colors as $x) {
+        echo "$x <br>";
+    }
+
+    echo "<br>";
+
+    $members = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+    foreach ($members as $x => $y) {
+        echo "$x : $y <br>";
+    }
+
+    echo "<br>";
+
+    class Car {
+        public $color;
+        public $model;
+        public function __construct($color, $model) {
+            $this->color = $color;
+            $this->model = $model;
+        }
+    }
+
+    $myCar = new Car("red", "Volvo");
+
+    foreach ($myCar as $x => $y) {
+        echo "$x: $y <br>";
+    }
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -603,15 +664,32 @@ $code = '
 
     public function classes()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! classes";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    class Fruit {
+        // Properties
+        public $name;
+        public $color;
+
+        // Methods
+        function set_name($name) {
+            $this->name = $name;
+        }
+        function get_name() {
+            return $this->name;
+        }
+    }
+
+    $apple = new Fruit();
+    $banana = new Fruit();
+    $apple->set_name("Apple");
+    $banana->set_name("Banana");
+
+    echo $apple->get_name();
+    echo "<br>";
+    echo $banana->get_name();
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
