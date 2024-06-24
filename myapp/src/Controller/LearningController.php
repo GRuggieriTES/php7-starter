@@ -24,11 +24,12 @@ class LearningController extends AppController
     {
 $code = '
 <?php
-    function helloWorld() {
-        echo "Hello, world! variables";
-    }
-
-    helloWorld();
+$hello = "Hello, world!";
+echo "concatination with $hello";
+echo "</br>";
+echo "concatination with " . $hello;
+echo "</br>";
+echo "<h2> $hello </h2>";
 ?>
 ';
     
@@ -44,15 +45,20 @@ $code = '
 
     public function echoPrint()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! echo print";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+$hello = "Hello, world!";
+$someArray = ["one", "two", 3];
+print_r("concatination with $hello");
+echo "</br>";
+print_r("concatination with " . $hello);
+echo "</br>";
+print_r("<h2> $hello </h2>");
+echo "</br>";
+print_r($someArray);
+var_dump($someArray);
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');

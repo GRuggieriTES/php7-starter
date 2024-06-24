@@ -26,7 +26,7 @@ document.getElementById('run').addEventListener('click', async (e) => {
 
         const data = await response.json();
 
-        document.getElementById('output').textContent = data.output;
+        document.getElementById('output').innerHTML = data.output;
         document.getElementById('console-output').textContent = data.console;
     } catch (error) {
         document.getElementById('console-output').textContent = error;
