@@ -3,6 +3,8 @@
 ## Description
 This project serves as a starter for PHP experimentation using php 7 specifically for working with legacy systems. It provides a basic structure and configuration to help you kickstart your PHP development.
 
+!['learning screenshot'](./docs/images/learning.png)
+
 ## Prerequisites
 Before using this project, make sure you have the following installed on your system:
 - Docker Desktop
