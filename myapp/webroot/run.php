@@ -1,22 +1,33 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $code = $_POST['code'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $code = $_POST['code'] ?? '';
 
-        $filename = tempnam(sys_get_temp_dir(), 'code') . '.php';
-        file_put_contents($filename, $code);
+    $filename = tempnam(sys_get_temp_dir(), 'code') . '.php';
+    file_put_contents($filename, $code);
 
-        ob_start();
-        try {
+    $output = '';
+    $error = '';
+
+    ob_start();
+    try {
+        $command = "php -l $filename display_errors=1 -d error_reporting=E_ALL $filename 2>&1";
+        $error = shell_exec($command);
+
+        if (strpos($error, 'No syntax errors detected') === false) {
+            $output = '';
+        } else {
+            ob_start();
             include $filename;
             $output = ob_get_clean();
-            $console = '';
-        } catch (Exception $e) {
-            $output = ob_get_clean();
-            $console = $e->getMessage();
+            $error = '';
         }
-
-        echo json_encode(['output' => $output, 'console' => $console]);
-
-        unlink($filename);
+    } catch (Exception $e) {
+        $output = ob_get_clean();
+        $error = $e->getMessage();
     }
+
+    echo json_encode(['output' => $output, 'error' => $error]);
+
+    unlink($filename);
+}
 ?>

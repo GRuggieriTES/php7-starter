@@ -82,6 +82,7 @@ endif;
             <ul>
                 <li><a href="/learning">Learning Home</a></li>
                 <li><a href="/learning/variables">Variables</a></li>
+                <li><a href="/learning/varScope">Variable Scope</a></li>
                 <li><a href="/learning/echoPrint">Echo and Print</a></li>
                 <li><a href="/learning/dataTypes">Data Types</a></li>
                 <li><a href="/learning/strings">Strings</a></li>
@@ -118,9 +119,7 @@ endif;
             <div id="output">
                 ...
             </div>
-            <div id="console-output">
-                ...
-            </div>
+            <div id="console-output">...</div>
         </main>
         <?= $this->Html->script(['learning']) ?>
     </body>

@@ -7,6 +7,14 @@ const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
     extraKeys: {"Ctrl-Space": "autocomplete"}
 });
 
+function setMinLines(editor, minLines) {
+    const lineHeight = parseFloat(getComputedStyle(editor.getWrapperElement()).lineHeight);
+    const minHeight = lineHeight * minLines;
+    editor.getWrapperElement().style.minHeight = minHeight + 'px';
+}
+
+setMinLines(editor, 27);
+
 document.getElementById('run').addEventListener('click', async (e) => {
     e.preventDefault();
     const code = editor.getValue();
@@ -27,7 +35,7 @@ document.getElementById('run').addEventListener('click', async (e) => {
         const data = await response.json();
 
         document.getElementById('output').innerHTML = data.output;
-        document.getElementById('console-output').textContent = data.console;
+        document.getElementById('console-output').textContent = data.error;
     } catch (error) {
         document.getElementById('console-output').textContent = error;
     }

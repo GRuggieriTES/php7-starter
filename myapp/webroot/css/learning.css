@@ -26,3 +26,19 @@ header { grid-area: header; }
 .primary-nav ul li a {
     text-decoration: none;
 }
+
+.CodeMirror {
+    font-size: 12px;
+}
+
+#output,
+#console-output {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+#console-output {
+    color: #F00;
+}

@@ -16,6 +16,7 @@ class LearningController extends AppController
     {
         $users = $this->fetchTable('Users')->find()->all();
 
+        $this->set('code', '');
         $this->set('hasUsers', true);
         $this->set(compact('users'));
     }
@@ -24,15 +25,63 @@ class LearningController extends AppController
     {
 $code = '
 <?php
-$hello = "Hello, world!";
-echo "concatination with $hello";
-echo "</br>";
-echo "concatination with " . $hello;
-echo "</br>";
-echo "<h2> $hello </h2>";
+    echo "<h4>Variable types:</h4>";
+    $integer = 5;      // is an integer
+    $string = "John";  // is a string
+    $boolean = true;   // is a boolean
+
+    echo $integer;
+    echo "<br>";
+    echo $string;
+    echo "<br>";
+    echo $boolean;
+
+    echo "<br>";
+    $txt = "www.tes.com";
+    echo "I love $txt!";
+
+    echo "<br>";
+    $x = 5;
+    $y = 4;
+
+    echo $x + $y;
+
+    echo "<h4>Using var_dump:</h4>";
+
+    $x = 5;
+    var_dump($x);
+    var_dump(5);
+    var_dump("John");
+    var_dump(3.14);
+    var_dump(true);
+    var_dump([2, 3, 56]);
+    var_dump(NULL);
+
+    echo "<h4>All three variables get the value \"Fruit\":</h4>";
+    $x = $y = $z = "Fruit";
+    echo $x;
 ?>
 ';
     
+        $this->set('code', $code);
+        $this->render('/Learning/index');
+    }
+
+    public function varScope()
+    {
+$code = '
+<?php
+    $x = 5; // global scope
+
+    function myTest() {
+    // using x inside this function will generate an error
+    echo "<p>Variable x inside function is: $x</p>";
+    }
+    myTest();
+
+    echo "<p>Variable x outside function is: $x</p>";
+?>
+';
         $this->set('code', $code);
         $this->render('/Learning/index');
     }
@@ -47,16 +96,19 @@ echo "<h2> $hello </h2>";
     {
 $code = '
 <?php
-$hello = "Hello, world!";
-$someArray = ["one", "two", 3];
-print_r("concatination with $hello");
-echo "</br>";
-print_r("concatination with " . $hello);
-echo "</br>";
-print_r("<h2> $hello </h2>");
-echo "</br>";
-print_r($someArray);
-var_dump($someArray);
+    $hello = "Hello, world!";
+    $someArray = ["one", "two", 3];
+    print_r("concatination with $hello");
+    echo "</br>";
+
+    print_r("concatination with " . $hello);
+    echo "</br>";
+
+    print_r("<h2> $hello </h2>");
+    echo "</br>";
+
+    print_r($someArray);
+    var_dump($someArray);
 ?>
 ';
     
@@ -66,15 +118,49 @@ var_dump($someArray);
 
     public function dataTypes()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! data types";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    $x = "Hello world!";
+
+    var_dump($x);
+
+    $x = 5985;
+    var_dump($x);
+
+    $x = 10.365;
+    var_dump($x);
+
+    $x = true;
+    var_dump($x);
+
+
+    $cars = array("Volvo","BMW","Toyota");
+    var_dump($cars);
+
+    class Car {
+    public $color;
+    public $model;
+    public function __construct($color, $model) {
+        $this->color = $color;
+        $this->model = $model;
+    }
+    public function message() {
+        return "My car is a " . $this->color . " " . $this->model . "!";
+    }
+    }
+
+    $myCar = new Car("red", "Volvo");
+    var_dump($myCar);
+
+    $x = null;
+    var_dump($x);
+
+    $x = 5;
+    $x = (string) $x;
+    var_dump($x);
+
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -114,15 +200,193 @@ var_dump($someArray);
 
     public function casting()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! casting";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = "hello"; // String
+    $d = true;    // Boolean
+    $e = NULL;    // NULL
+
+    $a = (string) $a;
+    $b = (string) $b;
+    $c = (string) $c;
+    $d = (string) $d;
+    $e = (string) $e;
+
+    //To verify the type of any object in PHP, use the var_dump() function:
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+
+//=========================================================
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = "25 kilometers"; // String
+    $d = "kilometers 25"; // String
+    $e = "hello"; // String
+    $f = true;    // Boolean
+    $g = NULL;    // NULL
+
+    $a = (int) $a;
+    $b = (int) $b;
+    $c = (int) $c;
+    $d = (int) $d;
+    $e = (int) $e;
+    $f = (int) $f;
+    $g = (int) $g;
+
+    //To verify the type of any object in PHP, use the var_dump() function:
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+
+//=========================================================
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = "25 kilometers"; // String
+    $d = "kilometers 25"; // String
+    $e = "hello"; // String
+    $f = true;    // Boolean
+    $g = NULL;    // NULL
+
+    $a = (float) $a;
+    $b = (float) $b;
+    $c = (float) $c;
+    $d = (float) $d;
+    $e = (float) $e;
+    $f = (float) $f;
+    $g = (float) $g;
+
+    //To verify the type of any object in PHP, use the var_dump() function:
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+
+//=========================================================
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = 0;       // Integer
+    $d = -1;      // Integer
+    $e = 0.1;     // Float
+    $f = "hello"; // String
+    $g = "";      // String
+    $h = true;    // Boolean
+    $i = NULL;    // NULL
+
+    $a = (bool) $a;
+    $b = (bool) $b;
+    $c = (bool) $c;
+    $d = (bool) $d;
+    $e = (bool) $e;
+    $f = (bool) $f;
+    $g = (bool) $g;
+    $h = (bool) $h;
+    $i = (bool) $i;
+
+    //To verify the type of any object in PHP, use the var_dump() function:
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+    var_dump($f);
+    var_dump($g);
+    var_dump($h);
+    var_dump($i);
+
+//=========================================================
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = "hello"; // String
+    $d = true;    // Boolean
+    $e = NULL;    // NULL
+
+    $a = (array) $a;
+    $b = (array) $b;
+    $c = (array) $c;
+    $d = (array) $d;
+    $e = (array) $e;
+
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+
+//=========================================================
+    class Car {
+        public $color;
+        public $model;
+        public function __construct($color, $model) {
+            $this->color = $color;
+            $this->model = $model;
+        }
+        public function message() {
+            return "My car is a " . $this->color . " " . $this->model . "!";
+        }
+    }
+
+    $myCar = new Car("red", "Volvo");
+
+    $myCar = (array) $myCar;
+    var_dump($myCar);
+
+//=========================================================
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = "hello"; // String
+    $d = true;    // Boolean
+    $e = NULL;    // NULL
+
+    $a = (object) $a;
+    $b = (object) $b;
+    $c = (object) $c;
+    $d = (object) $d;
+    $e = (object) $e;
+
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+
+//=========================================================
+    $a = array("Volvo", "BMW", "Toyota"); // indexed array
+    $b = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43"); // associative array
+
+    $a = (object) $a;
+    $b = (object) $b;
+
+    var_dump($a);
+    var_dump($b);
+
+//=========================================================
+    $a = 5;       // Integer
+    $b = 5.34;    // Float
+    $c = "hello"; // String
+    $d = true;    // Boolean
+    $e = NULL;    // NULL
+
+    $a = (unset) $a;
+    $b = (unset) $b;
+    $c = (unset) $c;
+    $d = (unset) $d;
+    $e = (unset) $e;
+
+    var_dump($a);
+    var_dump($b);
+    var_dump($c);
+    var_dump($d);
+    var_dump($e);
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -130,15 +394,26 @@ var_dump($someArray);
 
     public function math()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! math";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    echo(pi());
+    echo "<br>";
+    echo(min(0, 150, 30, 20, -8, -200));
+    echo "<br>";
+    echo(max(0, 150, 30, 20, -8, -200));
+    echo "<br>";
+    echo(abs(-6.7));
+    echo "<br>";
+    echo(sqrt(64));
+    echo "<br>";
+    echo(round(0.60));
+    echo(round(0.49));
+    echo "<br>";
+    echo(rand());
+    echo "<br>";
+    echo(rand(10, 100));
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -146,15 +421,34 @@ var_dump($someArray);
 
     public function constants()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! constants";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    define("GREETING", "Welcome to tes.com!");
+    echo GREETING;
+    echo "<br>";
+    define("GREETING", "Welcome to tes.com!", true);
+    echo greeting;
+    echo "<br>";
+    const MYCAR = "Volvo";
+    echo MYCAR;
+    echo "<br>";
+    define("cars", [
+    "Alfa Romeo",
+    "BMW",
+    "Toyota"
+    ]);
+    echo cars[0];
+    echo "<br>";
+
+    define("GREETING", "Welcome to tes.com!");
+
+    function myTest() {
+    echo GREETING;
+    }
+
+    myTest();
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -162,15 +456,28 @@ var_dump($someArray);
 
     public function magicConstants()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! magic constants";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    class Fruits {
+    public function myValue(){
+        return __CLASS__;
+    }
+    }
+    $kiwi = new Fruits();
+    echo $kiwi->myValue();
+
+    echo "<br>";
+    echo __DIR__;
+    echo "<br>";
+    echo __FILE__;
+    echo "<br>";
+    function myValue(){
+    return __FUNCTION__;
+    }
+    echo myValue();
+    echo "<br>";
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
@@ -194,15 +501,21 @@ var_dump($someArray);
 
     public function ifElse ()
     {
-        $code = '
-        <?php
-            function helloWorld() {
-                echo "Hello, world! if else esleif";
-            }
-    
-            helloWorld();
-        ?>
-            ';
+$code = '
+<?php
+    if (5 > 3) {
+        echo "Have a good day!";
+    }
+
+    echo "<br>";
+
+    $t = 14;
+
+    if ($t < 20) {
+        echo "Have a good day!";
+    }
+?>
+';
     
         $this->set('code', $code);
         $this->render('/Learning/index');
