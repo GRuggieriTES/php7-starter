@@ -81,6 +81,7 @@ endif;
         <nav class="primary-nav">
             <ul>
                 <li><a href="/learning">Learning Home</a></li>
+                <li><a href="/learning/logging">Logging Example</a></li>
                 <li><a href="/learning/variables">Variables</a></li>
                 <li><a href="/learning/varScope">Variable Scope</a></li>
                 <li><a href="/learning/echoPrint">Echo and Print</a></li>
@@ -115,11 +116,8 @@ endif;
                 <input id="run" type="submit" value="Run">
             </form>
 
-            <p>Output:</p>
-            <div id="output">
-                ...
-            </div>
-            <div id="console-output">...</div>
+            <div id="output"><span style="color: #ccc;">Output</span></div>
+            <div id="console-output"><span style="color: #ccc;">Error</span></div>
         </main>
         <?= $this->Html->script(['learning']) ?>
     </body>

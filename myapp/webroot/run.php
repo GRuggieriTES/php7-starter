@@ -14,12 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = shell_exec($command);
 
         if (strpos($error, 'No syntax errors detected') === false) {
-            $output = '';
+            $output = '<span style="color: #ccc;">Output</span>';
         } else {
             ob_start();
             include $filename;
             $output = ob_get_clean();
-            $error = '';
+            $error = '<span style="color: #ccc;">Error</span>';
         }
     } catch (Exception $e) {
         $output = ob_get_clean();

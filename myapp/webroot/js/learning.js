@@ -35,8 +35,8 @@ document.getElementById('run').addEventListener('click', async (e) => {
         const data = await response.json();
 
         document.getElementById('output').innerHTML = data.output;
-        document.getElementById('console-output').textContent = data.error;
+        document.getElementById('console-output').innerHTML = data.error;
     } catch (error) {
-        document.getElementById('console-output').textContent = error;
+        document.getElementById('console-output').innerHTML = error;
     }
 });
