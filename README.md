@@ -25,9 +25,9 @@ Before using this project, make sure you have the following installed on your sy
 ## Usage
 Once the container is up and running
 
-1. The app: `http://localhost:3000/mysql` is the example php page for accessing a users database
+1. The app: `http://localhost:3000/learning/variables` is the example php page for accessing the learnings.
 2. For getting PHP setup inforamtion, `http://localhost:3000/info`
-3. An example cake PHP application `http://localhost:3000//users` showing the same example as point 1, but generated MVC classes, full crud :)
+3. An example cake PHP application `http://localhost:3000/users` showing the same example as point 1, but generated MVC classes, full crud :)
 2. The phpMyAdmin MySQL client app `http://localhost:3001` Login - UN: `myuser`, PW: `mypassword`
 
 ## Customization
