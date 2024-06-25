@@ -1,0 +1,22 @@
+{
+  "name": "be-server",
+  "version": "1.0.0",
+  "description": "A mock backend server for testing thinks like logging, content etc",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js"
+  },
+  "keywords": [
+    "mock",
+    "server"
+  ],
+  "author": "Giuseppe Ruggieri",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
+}

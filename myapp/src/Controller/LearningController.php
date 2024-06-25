@@ -4,12 +4,15 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\View\JsonView;
+use Cake\Log\Log;
 
 class LearningController extends AppController
 {
     public function initialize(): void
     {
         parent::initialize();
+
+        $this->logger = Log::engine('default');
     }
 
     public function index()
@@ -23,6 +26,11 @@ class LearningController extends AppController
 
     public function variables()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'variables'
+        ]);
+
 $code = '
 <?php
     echo "<h4>Variable types:</h4>";
@@ -69,6 +77,11 @@ $code = '
 
     public function varScope()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'varScope'
+        ]);
+
 $code = '
 <?php
     $x = 5; // global scope
@@ -88,12 +101,22 @@ $code = '
 
     public function mysql()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'mysql'
+        ]);
+
         $this->set('url', '/mysql');
         $this->render('/Learning/index');
     }
 
     public function echoPrint()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'echoPrint'
+        ]);
+
 $code = '
 <?php
     $hello = "Hello, world!";
@@ -118,6 +141,11 @@ $code = '
 
     public function dataTypes()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'dataTypes'
+        ]);
+
 $code = '
 <?php
     $x = "Hello world!";
@@ -168,6 +196,11 @@ $code = '
 
     public function strings()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'strings'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -184,6 +217,11 @@ $code = '
 
     public function numbers()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'numbers'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -200,6 +238,11 @@ $code = '
 
     public function casting()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'regExp'
+        ]);
+
 $code = '
 <?php
     $a = 5;       // Integer
@@ -394,6 +437,11 @@ $code = '
 
     public function math()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'math'
+        ]);
+
 $code = '
 <?php
     echo(pi());
@@ -421,6 +469,11 @@ $code = '
 
     public function constants()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'constants'
+        ]);
+
 $code = '
 <?php
     define("GREETING", "Welcome to tes.com!");
@@ -456,6 +509,11 @@ $code = '
 
     public function magicConstants()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'magicConstants'
+        ]);
+
 $code = '
 <?php
     class Fruits {
@@ -485,6 +543,11 @@ $code = '
 
     public function operators()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'operators'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -501,6 +564,11 @@ $code = '
 
     public function ifElse ()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'ifElse'
+        ]);
+
 $code = '
 <?php
     if (5 > 3) {
@@ -523,6 +591,11 @@ $code = '
 
     public function switch()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'switch'
+        ]);
+
 $code = '
 <?php
     $favcolor = "red";
@@ -549,6 +622,11 @@ $code = '
 
     public function loops()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'loops'
+        ]);
+
 $code = '
 <?php
     for ($x = 0; $x <= 10; $x++) {
@@ -616,6 +694,11 @@ $code = '
 
     public function functions()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'functions'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -632,6 +715,11 @@ $code = '
 
     public function arrays()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'arrays'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -648,6 +736,11 @@ $code = '
 
     public function superGlobals()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'superGlobals'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -664,6 +757,11 @@ $code = '
 
     public function classes()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'classes'
+        ]);
+
 $code = '
 <?php
     class Fruit {
@@ -697,6 +795,11 @@ $code = '
 
     public function exceptions()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'exceptions'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {
@@ -713,6 +816,11 @@ $code = '
 
     public function regExp()
     {
+        $this->logger->info('server-side',[
+            'controller' => 'learning',
+            'action' => 'regExp'
+        ]);
+
         $code = '
         <?php
             function helloWorld() {

@@ -81,7 +81,6 @@ endif;
         <nav class="primary-nav">
             <ul>
                 <li><a href="/learning">Learning Home</a></li>
-                <li><a href="/learning/logging">Logging Example</a></li>
                 <li><a href="/learning/variables">Variables</a></li>
                 <li><a href="/learning/varScope">Variable Scope</a></li>
                 <li><a href="/learning/echoPrint">Echo and Print</a></li>

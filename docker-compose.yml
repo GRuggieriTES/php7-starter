@@ -28,6 +28,15 @@ services:
       - ./mysql-data:/var/lib/mysql
       - ./docker/mysql-schemas/:/docker-entrypoint-initdb.d
 
+  be-server:
+    image: node:20
+    ports:
+      - 5000:3000
+      - 3030:3030/udp
+    volumes:
+      - ./be-server:/be-server
+    command: /bin/bash -c "cd /be-server && npm run start"
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:

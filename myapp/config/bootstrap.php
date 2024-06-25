@@ -30,6 +30,8 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'paths.php';
  * - Setting the default application paths.
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
+// Use composer to load the autoloader.
+require ROOT . DS . 'vendor' . DS . 'autoload.php';
 
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
@@ -45,6 +47,11 @@ use Cake\Mailer\Mailer;
 use Cake\Mailer\TransportFactory;
 use Cake\Routing\Router;
 use Cake\Utility\Security;
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\SyslogUdpHandler;
+use App\Lib\SyslogHttpHandler;
 
 /*
  * See https://github.com/josegonzalez/php-dotenv for API details.
@@ -227,3 +234,14 @@ TypeFactory::map('time', StringType::class);
 // and https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax
 //\Cake\I18n\FrozenDate::setToStringFormat('dd.MM.yyyy');
 //\Cake\I18n\FrozenTime::setToStringFormat('dd.MM.yyyy HH:mm');
+
+Log::setConfig('default', function () {
+    $log = new Logger('user-data');
+    if (Configure::read('record_user_behaviour', true)) {
+        $log->pushHandler(new StreamHandler('./somelog.log', Logger::DEBUG));
+        $log->pushHandler(new SyslogUdpHandler('host.docker.internal', 3030));
+        $log->pushHandler(new SyslogHttpHandler('host.docker.internal', 5000));
+    }
+
+    return $log;
+});
