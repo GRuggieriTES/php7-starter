@@ -28,6 +28,14 @@ services:
       - ./mysql-data:/var/lib/mysql
       - ./docker/mysql-schemas/:/docker-entrypoint-initdb.d
 
+  be-server:
+    image: node:20
+    ports:
+      - 5000:3000
+    volumes:
+      - ./be-server:/be-server
+    command: /bin/bash -c "cd /be-server && npm run start"
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -35,3 +43,48 @@ services:
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: root
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./esdata:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+
+  graylog:
+    image: graylog/graylog:6.0
+    container_name: graylog
+    ports:
+      - 9000:9000
+      - 12201:12201
+      - 12201:12201/udp
+      - 1514:1514
+      - 1514:1514/udp
+    environment:
+      GRAYLOG_HTTP_EXTERNAL_URI: http://127.0.0.1:9000/
+      GRAYLOG_ROOT_PASSWORD_SHA2: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+      GRAYLOG_PASSWORD_SECRET: somepasswordpepper
+      GRAYLOG_MONGODB_URI: mongodb://graylog:example@mongo:27017/graylog
+      GRAYLOG_ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      GRAYLOG_HTTP_BIND_ADDRESS: "0.0.0.0:9000"
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./data:/data/db

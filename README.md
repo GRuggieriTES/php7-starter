@@ -25,10 +25,17 @@ Before using this project, make sure you have the following installed on your sy
 ## Usage
 Once the container is up and running
 
+some post instalation
+install php dependencies
+`docker exec -w /myapp -i php composer install`
+install node dependencies for mock node server
+`docker exec -w /be-server -i php7-starter-be-server-1 npm install`
+
 1. The app: `http://localhost:3000/learning/variables` is the example php page for accessing the learnings.
 2. For getting PHP setup inforamtion, `http://localhost:3000/info`
 3. An example cake PHP application `http://localhost:3000/users` showing the same example as point 1, but generated MVC classes, full crud :)
-2. The phpMyAdmin MySQL client app `http://localhost:3001` Login - UN: `myuser`, PW: `mypassword`
+4. The phpMyAdmin MySQL client app `http://localhost:3001` Login - UN: `myuser`, PW: `mypassword`
+5. You can send a udp test connection `docker exec -w /be-server -i php7-starter-be-server-1 node client.js`
 
 ## Customization
 Feel free to customize this project according to your needs. Here are a few areas you might want to consider:
@@ -47,3 +54,6 @@ If you would like to contribute to this project, please follow these steps:
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+`docker exec -w /classcharts -i dev_classcharts_web ./bin/cake migrations migrate`
+`docker exec -w /classcharts -i dev_classcharts_web ./bin/cake migrations seed `
