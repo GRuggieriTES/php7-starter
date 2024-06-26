@@ -2,7 +2,7 @@ const UDP = require('dgram')
 
 const client = UDP.createSocket('udp4')
 
-const port = 3030;
+const port = 1514;
 
 const hostname = '0.0.0.0';
 

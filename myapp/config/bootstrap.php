@@ -239,7 +239,7 @@ Log::setConfig('default', function () {
     $log = new Logger('user-data');
     if (Configure::read('record_user_behaviour', true)) {
         $log->pushHandler(new StreamHandler('./somelog.log', Logger::DEBUG));
-        $log->pushHandler(new SyslogUdpHandler('host.docker.internal', 3030));
+        $log->pushHandler(new SyslogUdpHandler('host.docker.internal', 1514));
         $log->pushHandler(new SyslogHttpHandler('host.docker.internal', 5000));
     }
 

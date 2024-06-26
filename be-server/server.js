@@ -10,7 +10,7 @@ const UDP = require('dgram');
 const server = UDP.createSocket('udp4');
 
 const httpPort = 3000;
-const udpPort = 3030;
+const udpPort = 1514;
 
 app.post('/', (req, res) => {
   console.log('Hello from HTTP server', req.body)
